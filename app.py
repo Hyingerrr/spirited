@@ -15,18 +15,20 @@ def main():
         page_icon="./images/favicon.ico"
     )
     st.title('📚:violet[S]:orange[Pirited]')
-    inputs = st.text_area(":lollipop: 请输入你的描述词，生成一组绘本故事!", max_chars=500)
-    model = st.radio(':strawberry: 选择一个模型', MODLES)
-    if model != "gpt-3.5-turbo-0613" :
-        st.warning("抱歉！目前只支持gpt-3.5-turbo-0613模型，其他模型敬请期待！")
+    inputs = st.text_area(":lollipop: 请输入你的描述词，生成一组绘本故事!", max_chars=500,placeholder="请输入你的描述词")
 
+    chapter_num = st.number_input(":strawberry: 页数", min_value=1, max_value=20, value=3)
+    # model = st.radio(':strawberry: 选择一个模型', MODLES)
+    # if model != "gpt-3.5-turbo-0613":
+    #     st.warning("抱歉！目前只支持gpt-3.5-turbo-0613模型，其他模型敬请期待！")
+    model = "gpt-3.5-turbo-0613"
     style = st.selectbox(':cherries:选择你喜欢的风格', [key for key in STYLES.keys()])
     is_save = st.checkbox(':banana:是否保存云端')
 
     if st.button('创作') and inputs:
         # 处理中 暂时放置一段文案
         with st.spinner('请稍等，生成中...'):
-            app = BookMaker(inputs, model, STYLES[style])
+            app = BookMaker(inputs, model, STYLES[style], chapter_num)
             # 1. 生成绘本image和description
             # 生成故事描述（含标题）
             story_pages = app.generate_story()

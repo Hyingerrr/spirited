@@ -16,5 +16,6 @@ STYLES = {
     '表现主义': 'Expressionist art style, Edvard Munch, distorted forms, dramatic colors, emotional impact, subjective'
 }
 
-MODLES = ['gpt-3.5-turbo-0613', 'gpt-4', 'llama2', 'chatglm']
-    
+MODLES = ['gpt-3.5-turbo-0613']
+# MODLES = ['gpt-3.5-turbo-0613', 'gpt-4', 'llama2', 'chatglm']
+
